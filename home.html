@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RestInn - Luxury Hotel Booking</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <nav>
+            <div class="logo">RestInn</div>
+            <ul class="nav-links">
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#">Rooms</a></li>
+                <li><a href="#">Gallery</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Make A Reservation</h1>
+            <div class="booking-form">
+                <div class="form-group">
+                    <label>Check in:</label>
+                    <input type="date" placeholder="DD/MM/YY">
+                </div>
+                <div class="form-group">
+                    <label>Check out:</label>
+                    <input type="date" placeholder="DD/MM/YY">
+                </div>
+                <div class="form-group">
+                    <label>Adults:</label>
+                    <input type="number" min="0" placeholder="Number of Adults">
+                </div>
+                <div class="form-group">
+                    <label>Kids:</label>
+                    <input type="number" min="0" placeholder="Number of Kids">
+                </div>
+                <div class="form-group">
+                    <label>Room:</label>
+                    <select>
+                        <option>Select Room Type</option>
+                        <option>Standard Room</option>
+                        <option>Deluxe Room</option>
+                        <option>Family Room</option>
+                        <option>Luxury Room</option>
+                    </select>
+                </div>
+                <button class="search-btn">SEARCH NOW</button>  
+            </div>
+        </div>
+    </section>
+
+    <section class="search-results" style="margin-top: 30px; display: none;">
+        <div class="container">
+            <h2 class="search-title" style="text-align: center; margin-bottom: 30px; font-family: 'Playfair Display', serif;">Search Results</h2>
+            <div id="div_result"></div>
+        </div>
+    </section>
+    
+    
+
+    <!-- Room Highlights Section -->
+    <section class="room-highlights">
+        <h2>Room <span>Highlights</span></h2>   
+        <div class="room-grid">
+            <!-- Các phòng sẽ được hiển thị ở đây -->
+        </div>
+    </section>
+
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Check Room Availability</h2>
+            <div class="additional-services">
+                <div class="modal-form">
+                    <input id="checkInDate" type="date" placeholder="Check-in Date">
+                    <input id="checkOutDate" type="date" placeholder="Check-out Date">
+                    <div class="form-group">
+                        <label>Number of Adults:</label>
+                        <input id="numAdults" type="number" min="0" placeholder="Enter Number of Adults">
+                    </div>
+                    <div class="form-group">
+                        <label>Number of Children:</label>
+                        <input id="numChildren" type="number" min="0" placeholder="Enter Number of Children">
+                    </div>
+                    <button class="proceed-btn" onclick="proceedToBooking()">PROCEED</button>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function openBookingModal() {
+            document.getElementById('bookingModal').style.display = 'block';
+        }
+    
+        document.querySelector('.close').onclick = function() {
+            document.getElementById('bookingModal').style.display = 'none';
+        }
+    
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('bookingModal')) {
+                document.getElementById('bookingModal').style.display = 'none';
+            }
+        }
+    </script>
+    <!-- Add this div somewhere in your HTML body -->
+    <div id="notification" class="notification" style="display: none;"></div>
+    <script src="/js/hotel.js"></script>  
+    <script src="/js/search.js"></script>
+    <script src="/js/booking.js"></script>
+
+</body>
+</html>
